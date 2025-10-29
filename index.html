@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wLiderr0 Site</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div id="#top"></div>
+
+
+  <!-- Üst Menü -->
+  <header>
+    <div class="logo">Space <span>Bilişim</span></div>
+    <nav>
+      <a href="#about">Hakkımda</a>
+      <a href="#education">Eğitim</a>
+      <a href="#services">Hizmetler</a>
+      <a href="#references">Referanslar</a>
+      <a href="#contact">İletişim</a>
+    </nav>
+  </header>
+
+  <!-- Ana Giriş -->
+  <main>
+    <div class="left">
+      <h1>Merhaba, ben <span class="name">Cypher,egeiwz</span></h1>
+      <h2>Ben <span class="role">Discord Bot Developeriyim.</span></h2>
+      <p>
+        Size Hayatımdan Bahsedeceğim, 12 yaşımda bilişim hocam sayesinde yazılıma yönelmiştim, ailem hiç desteklememişti.
+        çok çalışarak ve tekrar yaparak js öğrendim sonrasında phyton ve 16 yaşımdayım.
+      </p>
+      <div class="socials">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+      </div>
+      <div class="buttons">
+        <a class="btn" href="#about">Hakkımda</a>
+        <a class="btn-outline" href="#contact">Bana Ulaş</a>
+      </div>
+    </div>
+
+    <img src="images/cypher.jpg" alt="" class="yuvarlak" />
+  </main>
+
+  <!-- Hakkımda -->
+  <section id="about">
+    <h2>Hakkımda</h2>
+    <p>Merhaba, ben ege 16 yaşımdayım discord bot hizmeti veriyorum, sende sağlam aktif botlar için ulaşabilirsin!
+    </p>
+  </section>
+
+  <!-- Eğitim -->
+  <section id="education">
+    <h2>Eğitim</h2>
+    <p>10.Sınıf Öğrencisiyim, Hedefim ODTÜ Yazılım Mühendisliği Amacım Bot Satarak Birikim Yapmak</p>
+  </section>
+
+  <!-- Hizmetler -->
+  <section id="services">
+    <h2>Hizmetler</h2>
+    <div class="cards">
+      <div class="card">Management</div>
+      <div class="card">Hostinger</div>
+      <div class="card">Discord Bot Developer</div>
+    </div>
+  </section>
+
+  <!-- Referanslar -->
+  <section id="references">
+    <h2>Referanslar</h2>
+    <div class="logo-wrapper">
+      <a href="https://discord.gg/Jsr46wnzjd" target="_blank">
+        <div class="logo-container">
+          <img src="images/space.webp" alt="Logo" class="logo-img">
+          <div class="hover-text">Space Development</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- İletişim -->
+  <section id="contact">
+    <h2>İletişim</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Adınız" required>
+      <input type="email" id="email" placeholder="E-posta" required>
+      <textarea id="message" rows="5" placeholder="Mesajınız" required></textarea>
+      <button type="submit">Gönder</button>
+    </form>
+
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+
+      <!-- Sol -->
+      <div class="footer-column footer-left">
+        <a href="#top">Ana Sayfa</a>
+        <a href="#about">Hakkımızda</a>
+        <a href="#references">Referanslar</a>
+      </div>
+
+      <!-- Orta -->
+      <div class="footer-column footer-center">
+        <p>Boz Hosting Sponsorluğuyla..</p>
+      </div>
+
+      <!-- Sağ -->
+      <div class="footer-column footer-right">
+        <a href="https://instagram.com/" target="_blank">
+          <img src="images/instagram.png" alt="">
+        </a>
+        <a href="https://discord.gg/Jsr46wnzjd" target="_blank">
+          <img src="images/discord.png" alt="">
+        </a>
+        <a href="https://github.com/egeiwz" target="_blank">
+          <img src="images/indir.png" alt="">
+        </a>
+      </div>
+    </div>
+
+    <!-- Alt Yazı -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Space Development Tüm Haklar Saklıdır.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    const webhookURL = "DİSCORD_WEBHOOK_URL";
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const payload = {
+        content: `📩 Yeni İletişim Mesajı!\n👤 **Ad:** ${name}\n📧 **Email:** ${email}\n📝 **Mesaj:** ${message}`
+      };
+
+      fetch(webhookURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(() => {
+          alert("Mesajın gönderildi!");
+          document.getElementById("contactForm").reset();
+        })
+        .catch(error => {
+          console.error("Discord mesaj gönderilemedi:", error);
+          alert("Bir hata oluştu.");
+        });
+    });
+  </script>
+
+
+</body>
+
+</html>
